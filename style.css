@@ -1,0 +1,47 @@
+*{
+    padding:0px;
+    margin: 0px;
+    
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+    background-image: linear-gradient(#fa8934,#e1305b);   
+}
+
+.form{
+    background-image: linear-gradient(to right,#e1305b,#fa8934);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form>input,.form>select,.form>label,.form>button{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+.form>button{
+    background-color: #1a73e8;
+    color: white;
+    cursor: pointer;
+}
+.form>button:hover{
+    background-color: #1662c4;
+}
+
+.table{
+    color: white;
+    width:100%;
+    border-collapse: collapse;
+}
+.table, th, td{
+    padding: 5px 10px;
+    border: 2px solid black;
+}
