@@ -2,7 +2,17 @@ const tbody = document.querySelector("tbody");
 
 const form = document.querySelector("form");
 
+const submitButton = document.querySelector("form > button");
+
+
+function deleteRecord(event){
+    const buttonRef = event.target;
+    const row = buttonRef.parentNode.parentNode; // grandparent node
+    row.remove(); // detaches the tr from the DOM tree
+}
+
 function addEmployee(employee){
+
     // takes an employee object and store it in the table
     const tr = document.createElement("tr");
 
@@ -15,7 +25,15 @@ function addEmployee(employee){
     const options = document.createElement("td");
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
+
+    let editButton = document.createElement("button");
+    editButton.innerText = "Edit";
+
+    deleteButton.addEventListener("click", deleteRecord);
+    editButton.addEventListener("click", onEditClick);
+
     options.appendChild(deleteButton);
+    options.appendChild(editButton);
 
     tr.appendChild(options)
     tbody.appendChild(tr);
@@ -33,7 +51,15 @@ function onSubmitForm(event){
         email: form["email"].value
 
     }
-    addEmployee(employeeData);
+
+    if(editOptions.isEditing)
+    {
+        editEmployee(employeeData);
+    }
+    else{
+        addEmployee(employeeData);
+    }
+   
     form.reset();
 }
 
